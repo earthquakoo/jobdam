@@ -1,0 +1,460 @@
+/* config */
+
+$background-color: #252422;
+$border-color: #ccc5b9;
+
+
+
+/* HomeWidget */
+
+HomeWidget {
+    background: $background-color;
+}
+
+HomeWidget .home_widget_container {
+    align: center middle;
+}
+
+HomeWidget .button_widget {
+    width: 10%;
+    margin: 1 1 1 1;
+    border: blank $border-color;
+    background: $background-color;
+}
+
+HomeWidget .static {
+    color: #ffff;
+    content-align: center middle;
+    text-style: bold;
+    background: $background-color;
+}
+
+/* Login */
+
+LoginWidget {
+    background: $background-color;
+}
+
+LoginWidget .vertical_layout {
+    align: center bottom;
+    background: $background-color;
+}
+
+LoginWidget .horizontal_layout {
+    align: center top;
+    background: $background-color;
+}
+
+LoginWidget .login_input_widget {
+    width: 60%;
+    margin: 2;
+    border: round $border-color;
+}
+
+LoginWidget .pretty_widget {
+    margin-bottom: 1;
+    content-align: center middle;
+}
+
+LoginWidget .login_button_widget {
+    width: 30%;
+    margin: 1 4 0 4;
+    border: round $border-color;
+    background: $background-color;
+}
+
+
+/* Register */
+
+RegisterWidget {
+    background: $background-color; 
+}
+
+RegisterWidget .vertical_layout {
+    align: center bottom;
+    background: $background-color;
+}
+
+RegisterWidget .horizontal_layout {
+    align: center top;
+    background: $background-color;
+}
+
+RegisterWidget .register_input_widget{
+    width: 60%;
+    margin: 1;
+    border: round $border-color;
+}
+
+RegisterWidget .pretty_widget {
+    margin-bottom: 1;
+    content-align: center middle;
+}
+
+RegisterWidget .register_button_widget {
+    width: 30%;
+    margin: 1 4 0 4;
+    border: round $border-color;
+    background: $background-color;
+}
+
+
+/* ChatRoomList */
+
+ChatRoomList {
+    dock: left;
+    height: 1fr;
+    width: 26;
+    background: $background-color;
+}
+
+ChatRoomList .static_widget {
+    content-align: center middle;
+}
+
+ChatRoomList .chat_room_option_list {
+    height: 1fr;
+    width: 1fr;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: $border-color;
+}
+
+ChatRoomList .chat_room_list_horizontal {
+    dock: bottom;
+    padding: 1 2;
+    height: 5;
+    width: 1fr;
+}
+
+ChatRoomList .button_widget {
+    align: center middle;
+    border: round $border-color;
+    background: $background-color;
+    margin: 0 2 0 2;
+}
+
+
+/* ChatRoomMain */
+
+ChatRoomMain {
+    background: $background-color;
+}
+
+ChatRoomMain .vertical_layout {
+    align: center middle;
+    background: $background-color;
+}
+
+ChatRoomMain .input_widget {
+    width: 100%;
+    margin-top: 1;
+    margin-bottom: 1;
+    border: #5e503f;
+}
+
+ChatRoomMain .input_widget:focus {
+    border: $border-color;
+}
+
+ChatRoomMain .richlog_widget {
+    align: center middle;
+    background: $background-color;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: $border-color;
+    border: $border-color;
+}
+
+ChatRoomMain .main_horizontal_layout {
+    width: 1fr;
+    height: 100%;
+}
+
+ChatRoomMain .member_horizontal_layout {
+    width: 0.15fr;
+    height: 100%;
+}
+
+ChatRoomMain .chat_room_member_vertical {
+    dock: bottom;
+    padding: 1 2;
+    height: 0.2fr;
+    width: 100%;
+}
+
+ChatRoomMain .header_widget {
+    width: 100%;
+    background: $background-color;
+}
+
+ChatRoomMain .tree_widget {
+    background: $background-color;
+    border: $border-color;
+}
+
+ChatRoomMain .static_widget {
+    content-align: center middle;
+}
+
+ChatRoomMain .button_widget {
+    align: center middle;
+    border: round $border-color;
+    background: $background-color;
+}
+
+/* SearchRoom */
+
+SearchRoomList {
+    dock: right;
+    width: 87%;
+    background: $background-color;
+    /* border: $border-color; */
+}
+
+SearchRoomList .search_room_list {
+    height: 1fr;
+    width: 1fr;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: $border-color;
+}
+
+SearchRoomList .search_room_option_list {
+    height: 1fr;
+    width: 1fr;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: $border-color;
+}
+
+SearchRoomList .input_widget {
+    width: 100%;
+    align: center middle;
+    border: round $border-color;
+}
+
+/* SearchRoom - MyRoomList */
+
+MyRoomList {
+    dock: left;
+    height: 1fr;
+    width: 26;
+    background: $background-color;
+}
+
+MyRoomList .my_room_option_list {
+    height: 1fr;
+    width: 1fr;
+    scrollbar-size-vertical: 1;
+    scrollbar-color: $border-color;
+}
+
+MyRoomList .my_room_list_vertical {
+    dock: bottom;
+    padding: 1 2;
+    height: 0.2fr;
+    width: 100%;
+}
+
+MyRoomList .static_widget {
+    content-align: center middle;
+}
+
+MyRoomList .my_room_button_widget {
+    align: center middle;
+    margin: 0 2 0 2;
+    border: round $border-color;
+    background: $background-color;
+}
+
+/* CreateRoom */
+
+CreateRoomWidget {
+    align: center middle;
+    margin: 4 10 4 10;
+    background: $background-color;
+}
+
+CreateRoomWidget .label_widget {
+    content-align: center middle;
+}
+
+CreateRoomWidget .vertical_layout {
+    align: center bottom;
+    background: $background-color;
+}
+
+CreateRoomWidget .horizontal_layout {
+    align: center middle;
+}
+
+CreateRoomWidget .pretty_widget {
+    content-align: center middle;
+    margin-bottom: 1;
+}
+
+CreateRoomWidget .room_name_input_widget {
+    width: 73%;
+    align: center middle;
+    margin: 1 4 0 4;
+    border: round $border-color;
+}
+
+CreateRoomWidget .button_widget {
+    width: 35%;
+    margin: 0 4 0 4;
+    border: round $border-color;
+    background: $background-color;
+}
+
+CreateRoomWidget .select_widget {
+    width: 73%;
+    margin: 1 4 0 4;
+}
+
+/* RoomSetting */
+
+RoomSettingModal {
+    align: center middle;
+    margin: 4 10 4 10;
+    background: $background-color;
+}
+
+RoomSettingModal .label_widget {
+    content-align: center middle;
+}
+
+RoomSettingModal .vertical_layout {
+    align: center bottom;
+    background: $background-color;
+}
+
+RoomSettingModal .horizontal_layout {
+    align: center middle;
+}
+
+RoomSettingModal .pretty_widget {
+    content-align: center middle;
+    margin-bottom: 1;
+}
+
+RoomSettingModal .room_name_input_widget {
+    width: 73%;
+    align: center middle;
+    margin: 1 4 0 4;
+    border: round $border-color;
+}
+
+RoomSettingModal .button_widget {
+    width: 35%;
+    margin: 0 4 0 4;
+    border: round $border-color;
+    background: $background-color;
+}
+
+RoomSettingModal .select_widget {
+    width: 73%;
+    margin: 1 4 0 4;
+}
+
+
+/* ErrorModal */
+
+ErrorModal {
+    align: center middle;
+}
+
+ErrorModal .grid_container {
+    grid-size: 1;
+    grid-gutter: 1 2;
+    grid-rows: 1fr 3;
+    padding: 0 1;
+    width: 60;
+    height: 11;
+    border: $border-color;
+    background: $background-color;
+}
+
+ErrorModal .label_widget {
+    column-span: 2;
+    height: 1fr;
+    width: 1fr;
+    content-align: center middle;
+}
+
+ErrorModal .button_widget {
+    width: 100%;
+    align: center middle;
+    border: round $border-color;
+    background: $background-color;
+}
+
+/* LeaveRoomModal */
+
+LeaveRoomModal {
+    align: center middle;
+}
+
+LeaveRoomModal .grid_container {
+    grid-size: 2;
+    grid-gutter: 1 2;
+    grid-rows: 1fr 3;
+    padding: 0 1;
+    width: 60;
+    height: 11;
+    border: $border-color;
+    background: $background-color;
+}
+
+LeaveRoomModal .label_widget {
+    column-span: 2;
+    height: 1fr;
+    width: 1fr;
+    content-align: center middle;
+}
+
+LeaveRoomModal .button_widget {
+    width: 100%;
+    align: center middle;
+    border: round $border-color;
+    background: $background-color;
+}
+
+/* OptionList */
+
+
+OptionList {
+    border: #5e503f;
+}
+
+OptionList:focus {
+    border: $border-color;
+}
+
+OptionList > .option-list--option-highlighted {
+    background: $border-color;
+    color: $text;
+    text-style: bold;
+}
+
+OptionList:focus > .option-list--option-highlighted {
+    background: #5e503f;
+}
+
+OptionList > .option-list--option-highlighted-disabled {
+    color: $text-disabled;
+    background: black;
+}
+
+OptionList > .option-list--option-hover {
+    background: $border-color;
+}
+
+OptionList > .option-list--option-hover-highlighted {
+    background: $border-color;
+    color: $text;
+    text-style: bold;
+}
+  
+OptionList:focus > .option-list--option-hover-highlighted {
+    background: #5e503f;
+    color: $text;
+    text-style: bold;
+}

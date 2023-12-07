@@ -1,0 +1,6 @@
+{
+    "app_name": "jobdam",
+    "base_url": "http://jobdam-server-load-balancer-1026334165.us-east-1.elb.amazonaws.com",
+    "version": "0.1.0"
+  }
+  
