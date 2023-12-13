@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "jobdam"
-version = "0.1.6"
-description = "Textual open chatting"
+version = "0.1.7"
+description = "Release version 0.1.7"
 authors = ["Earthquakoo <cream5343@gmail.com>"]
 readme = "README.md"
 

@@ -10,7 +10,7 @@
 `Jobdam` is a Text User Interface (TUI) open chatting application designed for simple and hassle-free communication in the terminal. The name "Jobdam" means "chat, small talk, chitchat" in Korean, reflecting the app's purpose of facilitating casual conversations. The application features a straightforward UI, allowing users to engage in open chatting without the need for authentication or sign-up.
 
 
-# 🛎 Current Version `0.1.6`
+# 🛎 Current Version `0.1.7`
 
 #### Upgrade with `pip install jobdam --upgrade`
 
