@@ -81,7 +81,7 @@ class LoginWidget(Widget):
                 "password": password.value,
             }
             resp = auth_api.login_user(user_info)
-            if resp['status_code'] == 400:
+            if resp['status_code'] != 200:
                 self.app.push_screen(ErrorModal(name=resp['detail']))
             else:
                 self.app.title = "online"

@@ -33,3 +33,4 @@ class ChatRoomScreen(Screen):
     @on(OptionList.OptionSelected)
     def on_option_list_option_selected(self, event: OptionList.OptionSelected):
         self.app.push_screen(ChatRoomScreen(name=event.option_id))
+        self.app.refresh()

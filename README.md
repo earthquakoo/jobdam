@@ -3,12 +3,14 @@
 
 <h4 align="center">Enjoy simple open chatting in the terminal!</h4>
 
+<p align="center"><img src="/resources/jobdam-gif.gif"></img></center>
+
 # Introduction
 
 `Jobdam`, meaning "chat, small talk, chitchat" in Korean, is a TUI (Text User Interface) open chatting application built with a simple UI. It allows anyone to easily engage in open chatting in the terminal without the need for authentication or sign-up.
 
 
-# 🛎 Current Version `0.1.1`
+# 🛎 Current Version `0.1.6`
 
 #### Upgrade with `pip install jobdam --upgrade`
 
@@ -21,12 +23,14 @@
 pip install jobdam
 ```
 
+Some shells can damage the UI, and we recommend it to be used on the full screen, preferably.
 
 # 👨‍💻 Instructions
 
 - The screen consists of various widgets. You can navigate conveniently with the TAB key and select a Room using the up and down arrow keys.
 - To create a Room, you need to input Room Name, Tag, and Maximum people. The Maximum people limit is up to 10.
 - Owners can ban guests and change room settings.
+- You can create three rooms per account.
 
 # 📸 Screenshot
 ## Main

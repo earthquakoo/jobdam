@@ -1,5 +1,5 @@
+import click
 from textual.app import App
-
 
 import sys
 sys.path.append('.')
@@ -23,6 +23,19 @@ class JobdamApp(App):
         self.app.install_screen(HomeMenuScreen(), "home_screen")
         self.app.push_screen(HomeMenuScreen())
 
+
+@click.group()
+@click.version_option(cfg.version)
+@click.pass_context
+def cli(ctx):
+    pass
+
+
+if __name__ == "__main__":
+    app = JobdamApp()
+    cli()
+    app.run()
+    
 
 def main():
     app = JobdamApp()

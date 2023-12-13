@@ -72,29 +72,25 @@ class ChatRoomMain(Widget):
     def on_mount(self) -> None:
         loop = asyncio.get_event_loop()
         loop.create_task(self.connect())
-    
+        
     
     def compose(self) -> ComposeResult:
         cur_room_name = self.app.query_one(Screen).name
         
         with Horizontal(classes="main_horizontal_layout"):
-            with Vertical():
-                yield Header(show_clock=True, classes="header_widget")
-                rich_log = self.load_message_histroy(self.app.query_one(Screen).name)
-                yield Vertical(
-                    rich_log,
-                    Input(placeholder="Enter chat", classes="input_widget"),
-                    classes="vertical_layout"
-                )
-            with Horizontal(classes="member_horizontal_layout"):
-                with Vertical():
-                    yield Static(Text("Member"), classes="static_widget")
-                    tree = self.load_room_members(room_name=cur_room_name)
-                    yield tree
-                    
-                    with Vertical(classes="chat_room_member_vertical"):
-                        yield Button("Setting", classes="button_widget", id="room_setting")
-                        yield Button("Exit", classes="button_widget", id="exit")                        
+            yield Header(show_clock=True, classes="header_widget")
+            rich_log = self.load_message_histroy(self.app.query_one(Screen).name)
+            with Vertical(classes="vertical_layout"):
+                yield rich_log
+                yield Input(placeholder="Enter chat", classes="input_widget")
+
+        with Vertical(classes="member_vertical_layout"):
+            yield Static(Text("Member"), classes="static_widget")
+            tree = self.load_room_members(room_name=cur_room_name)
+            yield tree
+            with Vertical(classes="chat_room_member_vertical"):
+                yield Button("Setting", classes="button_widget", id="room_setting")
+                yield Button("Exit", classes="button_widget", id="exit")                        
     
     
     @on(Button.Pressed)
@@ -144,21 +140,20 @@ class ChatRoomMain(Widget):
         if self.chat:
             user_name = auth_utils.get_user_name_from_json(cfg.config_path)
             message = {
-                "action": "sendMessage",
-                "user_name": user_name,
-                "content": event.value,
-                "room_name": self.app.query_one(Screen).name
-                }
-            await self.websocket_conn.send(json.dumps(message))
-            event.input.value = ""
-            message_info = {
                 "user_name": user_name,
                 "room_name": self.app.query_one(Screen).name,
                 "content": event.value,
             }
-            chat_api.save_message(message_info)
-    
-    
+            
+            chat_api.save_message(message)
+            
+            message["action"] = "sendMessage"
+            await self.websocket_conn.send(json.dumps(message))
+            
+            event.input.value = ""
+            self.app.refresh()
+
+            
     @on(Tree.NodeSelected)
     def on_tree_noed_selected(self, event: Tree.NodeSelected) -> None:
         cur_room_name = self.app.query_one(Screen).name
@@ -182,8 +177,9 @@ class ChatRoomMain(Widget):
         message_history = ChatApi.get_message_history(room_name)
         rich_log = RichLog(classes="richlog_widget")
         
-        for i in range(len(message_history)):
-            rich_log.write(Text(f"{message_history[i]['user_name']}: {message_history[i]['content']}"))
+        if message_history:
+            for i in range(len(message_history)):
+                rich_log.write(Text(f"{message_history[i]['user_name']}: {message_history[i]['content']}"))
             
         return rich_log
     
@@ -201,26 +197,39 @@ class ChatRoomMain(Widget):
         return tree
     
     
-    async def get_recent_messages(self):
-        room_name = str(self.app.query_one(Screen).name)
-        request = {
-            "action": "getRecentMessages",
-            "room_name": room_name
-        }
-        
-        await self.websocket_conn.send(json.dumps(request))
-        data = await self.websocket_conn.recv()
-        data = eval(data)
-        log = self.query_one(RichLog)
-        
-        for message in data["messages"]:
-            user_name = message["user_name"]
-            content = message["content"]
-            log.write(Text(f'{user_name}: {content}'))
+    async def connection_message(self, log, websocket):
+        cur_user = user_name = auth_utils.get_user_name_from_json(cfg.config_path)
+        message = {
+                "action": "sendMessage",
+                "user_name": "server",
+                "room_name": self.app.query_one(Screen).name,
+                "content": f"{cur_user} is connected.",
+            }
             
-        log.write(Text('-----This is a list of the last 10 messages.-----'))
-        self.app.refresh()
-        
+        await self.websocket_conn.send(json.dumps(message))
+        data = await websocket.recv()
+        data = eval(data)
+        user_name = data["messages"][0]["user_name"]
+        content = data["messages"][0]["content"]
+        log.write(Text(f'{user_name}: {content}', style="red"))
+    
+    
+    async def disconnection_message(self, log, websocket):
+        cur_user = user_name = auth_utils.get_user_name_from_json(cfg.config_path)
+        message = {
+                "action": "sendMessage",
+                "user_name": "server",
+                "room_name": self.app.query_one(Screen).name,
+                "content": f"{cur_user} is disconnected.",
+            }
+            
+        await self.websocket_conn.send(json.dumps(message))
+        data = await websocket.recv()
+        data = eval(data)
+        user_name = data["messages"][0]["user_name"]
+        content = data["messages"][0]["content"]
+        log.write(Text(f'{user_name}: {content}', style="red"))
+    
     
     async def connect(self):
         room_name = quote(self.app.query_one(Screen).name)
@@ -228,14 +237,17 @@ class ChatRoomMain(Widget):
         async with websockets.connect(f"wss://t03skokg0f.execute-api.us-east-1.amazonaws.com/dev?room_name={room_name}&user_id={user_id}") as websocket:
             self.websocket_conn = websocket
             log = self.query_one(RichLog)
-            
-            # await self.get_recent_messages()
+
+            await self.connection_message(log, websocket)
             
             while True:
-                data = await websocket.recv()
-                if data:
-                    data = eval(data)
-                    user_name = data["messages"][0]["user_name"]
-                    content = data["messages"][0]["content"]
-                    log.write(Text(f'{user_name}: {content}'))
-                    self.app.refresh()
+                try:
+                    data = await websocket.recv()
+                    if data:
+                        data = eval(data)
+                        user_name = data["messages"][0]["user_name"]
+                        content = data["messages"][0]["content"]
+                        log.write(Text(f'{user_name}: {content}'))
+                        self.app.refresh()
+                except websockets.ConnectionClosed:
+                    await self.disconnection_message(log, websocket)

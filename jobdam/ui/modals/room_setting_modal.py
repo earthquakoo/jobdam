@@ -172,6 +172,7 @@ class RoomSettingModal(ModalScreen):
             resp = chat_api.create_chat_room(room_info)
             if resp['status_code'] == 201:
                 self.app.switch_screen("search_room_screen")
+                self.app.refresh()
             else:
                 self.app.push_screen(ErrorModal(name=resp['detail']))
         # change room setting
@@ -181,6 +182,7 @@ class RoomSettingModal(ModalScreen):
             if resp['status_code'] == 200:
                 await self.websocket.close()
                 self.app.switch_screen("search_room_screen")
+                self.app.refresh()
             else:
                 self.app.push_screen(ErrorModal(name=resp['detail']))
         else:

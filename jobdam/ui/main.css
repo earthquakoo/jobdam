@@ -104,7 +104,7 @@ RegisterWidget .register_button_widget {
 ChatRoomList {
     dock: left;
     height: 1fr;
-    width: 26;
+    width: 13%;
     background: $background-color;
 }
 
@@ -130,6 +130,7 @@ ChatRoomList .button_widget {
     align: center middle;
     border: round $border-color;
     background: $background-color;
+    width: auto;
     margin: 0 2 0 2;
 }
 
@@ -165,13 +166,14 @@ ChatRoomMain .richlog_widget {
 }
 
 ChatRoomMain .main_horizontal_layout {
-    width: 1fr;
-    height: 100%;
+    width: 100%;
+    height: 1fr;
 }
 
-ChatRoomMain .member_horizontal_layout {
-    width: 0.15fr;
-    height: 100%;
+ChatRoomMain .member_vertical_layout {
+    dock: right;
+    width: 13%;
+    height: 1fr;
 }
 
 ChatRoomMain .chat_room_member_vertical {
@@ -235,7 +237,7 @@ SearchRoomList .input_widget {
 MyRoomList {
     dock: left;
     height: 1fr;
-    width: 26;
+    width: 13%;
     background: $background-color;
 }
 

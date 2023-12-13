@@ -56,8 +56,11 @@ class LeaveRoomModal(ModalScreen):
                 chat_api.leave_room({"room_name": self.room_name})
             await self.websocket.close()
             self.app.switch_screen("search_room_screen")
+            self.app.refresh()
         elif event.button.id == "Ban":
             chat_api.leave_room({"room_name": self.room_name, "user_name": self.user_name})
             self.app.switch_screen("chat_room_screen")
+            self.app.refresh()
         else:
-            self.app.pop_screen()  
+            self.app.pop_screen()
+            self.app.refresh()

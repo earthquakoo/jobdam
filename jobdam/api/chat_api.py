@@ -20,10 +20,10 @@ class ChatApi:
             return {"status_code": resp.status_code}
         elif resp.status_code == 400:
             detail = global_utils.bytes2dict(resp.content)['detail']
-            return {"status_code": 400, "detail": detail}
+            return {"status_code": resp.status_code, "detail": detail}
         else:
             detail = global_utils.bytes2dict(resp.content)['detail']
-            return {"status_code": 401, "detail": detail}
+            return {"status_code": resp.status_code, "detail": detail}
 
 
     def delete_chat_room(self, data: dict):
@@ -37,7 +37,9 @@ class ChatApi:
             return {"status_code": resp.status_code}
         elif resp.status_code == 400:
             detail = global_utils.bytes2dict(resp.content)['detail']
-            return {"status_code": 400, "detail": detail}
+            return {"status_code": resp.status_code, "detail": detail}
+        else:
+            return {"status_code": resp.status_code, "detail": detail}
 
 
     def leave_room(self, data: dict):
@@ -51,6 +53,9 @@ class ChatApi:
             return message_history
         elif resp.status_code == 400:
             detail = global_utils.bytes2dict(resp.content)['detail']
+            return {"status_code": resp.status_code, "detail": detail}
+        else:
+            return {"status_code": resp.status_code, "detail": detail}
 
 
     def join_room(self, data: dict):
@@ -63,6 +68,9 @@ class ChatApi:
             return {"status_code": resp.status_code}
         elif resp.status_code == 400:
             detail = global_utils.bytes2dict(resp.content)['detail']
+            return {"status_code": resp.status_code, "detail": detail}
+        else:
+            return {"status_code": resp.status_code, "detail": detail}
             
             
     def save_message(self, data: dict):
@@ -159,4 +167,4 @@ class ChatApi:
             return {"status_code": resp.status_code}
         else:
             detail = global_utils.bytes2dict(resp.content)['detail']
-            {"status_code": resp.status_code, "detail": detail}
+            return {"status_code": resp.status_code, "detail": detail}

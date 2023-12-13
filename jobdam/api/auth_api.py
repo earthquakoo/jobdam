@@ -34,7 +34,7 @@ def login_user(data: dict):
                                                    "user_name": login_response['user_name']
                                                    })
         return {"status_code": resp.status_code}
-    elif resp.status_code == 400:
+    else:
         detail = global_utils.bytes2dict(resp.content)['detail']
         return {"status_code": resp.status_code, "detail": detail}
     
