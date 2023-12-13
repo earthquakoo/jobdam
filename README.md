@@ -7,7 +7,7 @@
 
 # Introduction
 
-`Jobdam` is a Text User Interface (TUI) open chatting application designed for simple and hassle-free communication in the terminal. The name "Jobdam" means "chat, small talk, chitchat" in Korean, reflecting the app's purpose of facilitating casual conversations. The application features a straightforward UI, allowing users to engage in open chatting without the need for authentication or sign-up.
+`Jobdam` is a Text User Interface (TUI) open chatting application designed for simple and hassle-free communication in the terminal. The name "Jobdam" means "chat, small talk, chitchat" in Korean, reflecting the app's purpose of facilitating casual conversations. The application features a straightforward UI, allowing users to engage in open chatting without the need for authentication.
 
 
 # 🛎 Current Version `0.1.9`
@@ -25,7 +25,7 @@ pip install jobdam
 
 Note: Some shells may affect the UI, so it's recommended to use Jobdam on full-screen mode.
 
-# 👨‍💻 Instructions
+# 👨‍💻 Instructions(Must-Read)
 
 - The screen consists of various widgets. You can navigate conveniently with the TAB key and select a Room using the up and down arrow keys.
 - Create a room by providing Room Name, Tag, and Maximum people (up to 10).
@@ -81,6 +81,11 @@ I wanted the WebSocket to persist for the duration of the access token's validit
 
 I will strive to make this possible as quickly as possible.
 
+# 🐛 Report Bug
+
+Jobdam is a newborn that has just been released, so some bugs may occur.
+
+If you find a bug, please let me know through the `issue` section, and I'll take care of it promptly.
 
 # 🚮 Uninstalling
 
