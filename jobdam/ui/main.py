@@ -24,19 +24,20 @@ class JobdamApp(App):
         self.app.push_screen(HomeMenuScreen())
 
 
-@click.group()
-@click.version_option(cfg.version)
+@click.group(invoke_without_command=True)
+@click.version_option("0.1.9")
 @click.pass_context
-def cli(ctx):
-    pass
-
-
-if __name__ == "__main__":
+def cli(ctx: click.Context):
     app = JobdamApp()
-    cli()
-    app.run()
+    
+    if ctx.invoked_subcommand is None:
+        app.run()
+
+
+# if __name__ == "__main__":
+#     app = JobdamApp()
+#     cli()
     
 
 def main():
-    app = JobdamApp()
-    app.run()
+    cli()
