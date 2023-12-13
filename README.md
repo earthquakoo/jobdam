@@ -7,7 +7,7 @@
 
 # Introduction
 
-`Jobdam`, meaning "chat, small talk, chitchat" in Korean, is a TUI (Text User Interface) open chatting application built with a simple UI. It allows anyone to easily engage in open chatting in the terminal without the need for authentication or sign-up.
+`Jobdam` is a Text User Interface (TUI) open chatting application designed for simple and hassle-free communication in the terminal. The name "Jobdam" means "chat, small talk, chitchat" in Korean, reflecting the app's purpose of facilitating casual conversations. The application features a straightforward UI, allowing users to engage in open chatting without the need for authentication or sign-up.
 
 
 # 🛎 Current Version `0.1.6`
@@ -16,21 +16,21 @@
 
 # 🚀 Installation & Settings
 
-- Requires Python version `>3.11` to be installed.
-- Installable in the terminal using the following command:
+- Requires Python version >3.11.
+- Install using:
 
 ```bash
 pip install jobdam
 ```
 
-Some shells can damage the UI, and we recommend it to be used on the full screen, preferably.
+Note: Some shells may affect the UI, so it's recommended to use Jobdam on full-screen mode.
 
 # 👨‍💻 Instructions
 
 - The screen consists of various widgets. You can navigate conveniently with the TAB key and select a Room using the up and down arrow keys.
-- To create a Room, you need to input Room Name, Tag, and Maximum people. The Maximum people limit is up to 10.
-- Owners can ban guests and change room settings.
-- You can create three rooms per account.
+- Create a room by providing Room Name, Tag, and Maximum people (up to 10).
+- Room owners can ban guests and adjust room settings.
+- Each account can create up to three rooms.
 
 # 📸 Screenshot
 ## Main
@@ -65,11 +65,11 @@ Clicking the Create Room button on the search screen brings up the following scr
 
 ## Chat room Screen
 
-- The left side displays rooms you've joined. If it's your room, you can join another room at any time.
-- The main center screen shows the chat history.
-- The right screen lists the people in the room. Owners can ban unwanted guests with the `Enter` key.
-- The `Setting` button at the bottom left allows owners to change room settings.
-- The `Exit` button deletes the room if you're the owner or simply exits the joined room if you're a guest.
+- Left side: Rooms you've joined.
+- Center: Chat history.
+- Right side: People in the room; owners can ban guests.
+- Bottom-left: Settings button for room owners.
+- Bottom-right: Exit button for owners (deletes the room) or guests (exits the room).
 
 ![](image/chat-room.png)
 
